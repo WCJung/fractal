@@ -1,14 +1,3 @@
-import os
-from load_libraries import *
-from protocol_save import *
-from protocol_train import *
-from protocol_plot import *
-from datasets.mnist import *
-from model.resnet_v4 import *
-from typing import Any
-from functools import partial
-from pprint import pformat
-import pandas as pd
 import argparse
 
 # Load the settings
@@ -25,6 +14,20 @@ parser.add_argument('--mnmx', default=[-4, 0, -4, 0], type=int, nargs='+', help=
 parser.add_argument('--dpi', default=100, type=int, help="PNG 파일의 해상도 값입니다. 냅두셔도 됩니다.")
 parser.add_argument('--figsize', default=[8, 8], type=int, nargs='+', help="lossmap의 figure size를 결정합니다. 정사각형꼴로 설정하세요.")
 args = parser.parse_args()
+
+
+import os
+from load_libraries import *
+from protocol_save import *
+from protocol_train import *
+from protocol_plot import *
+from datasets.mnist import *
+from model.resnet_v4 import *
+from typing import Any
+from functools import partial
+from pprint import pformat
+import pandas as pd
+
 
 # Metadata: hyperparmas
 pd.DataFrame(args._get_kwargs()).to_csv(output_path + '/hyperparams.csv', header=False, index=False)
