@@ -1,6 +1,6 @@
 # Overview
 
-본 코드는 MNIST dataset을 이용하여 ResNet-20을 learning rate 또는 weight offeset을 다양하게 주어 여러 경우의 모델을 학습시킬 수 있다. 이를 통해 동일한 epochs만큼 학습하고 나면, 각 경우의 모델이 loss가 제대로 수렴하는지 안하는지 관찰할 수 있다. 우리는 이를 loss의 수렴경계라고 지칭하고, 이 수렴경계가 프렉탈 형상을 띄는 것을 관찰할 수 있었다.
+본 코드는 MNIST dataset을 이용하여 ResNet-20을 learning rate 또는 weight offeset을 다양하게 주어 여러 경우의 모델을 학습시킬 수 있다. 이를 통해 동일한 epochs만큼 학습하고 나면, 각 경우의 모델이 loss가 제대로 수렴하는지 안하는지 관찰할 수 있다. 우리는 이를 loss의 수렴경계라고 지칭하고, 이 수렴경계가 프렉탈 형상을 띄는 것을 관찰할 수 있었다. 
 
 
 # How to use
@@ -52,7 +52,15 @@
    `cd (본 코드가 위치한 디렉토리)`
 
 **2. 자신이 설정하고 싶은 hyperparameter를 설정하여 main.py를 구동한다.** \
-   `python main.py --num_epochs 300 --resolution 256`
+   `python main.py --num_epochs 300 --resolution 256` on gpu
+   `python main.py --num_epochs 5 --resolution 4` on cpu if cannot use gpu
 
 **3. 다른 hyperparameter를 보고싶다면 아래 코드를 참고!** \
    `python main.py -h`
+
+
+# Hardware Requirements
+
+Nvidia A100 80GB x1
+
+CPU로도 가능하나, 
