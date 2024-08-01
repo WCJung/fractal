@@ -16,7 +16,6 @@ parser.add_argument('--figsize', default=[8, 8], type=int, nargs='+', help="loss
 args = parser.parse_args()
 
 
-import os
 from load_libraries import *
 from protocol_save import *
 from protocol_train import *
@@ -105,11 +104,6 @@ lrs = scaling_sketch(mnmx, resolution)
 train_ds, test_ds = prepare_dataset(batch_size)
 total_batch = train_ds.cardinality().numpy()
 total_tbatch = test_ds.cardinality().numpy()
-
-# for batch in train_ds.as_numpy_iterator():
-#    x = batch['image']
-#    y = batch['label']
-#    break
 
 batch = next(iter(train_ds))
 x, y = batch['image'], batch['label']

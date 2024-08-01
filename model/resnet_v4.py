@@ -159,7 +159,9 @@ def batchnorm(x, params_bn, batch_stats_bn, momentum=0.9, eps=1e-6, on_train=Tru
 @partial(jax.jit, static_argnums=3)
 def loss_fn(variables, x, y, on_train=True):
     logits, variables = net(variables, x, on_train=on_train)
-    return optax.softmax_cross_entropy_with_integer_labels(jnp.clip(logits, 1e-10, 1.), y).mean(), (logits, variables)
+    # return optax.softmax_cross_entropy_with_integer_labels(jnp.clip(logits, 1e-10, 1.), y).mean(), (logits, variables)
+    return optax.softmax_cross_entropy_with_integer_labels(logits).mean(), (logits, variables)
+
 
 # @jax.jit
 @partial(jax.vmap, in_axes=(0, None, None, 0))

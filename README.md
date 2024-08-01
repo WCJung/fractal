@@ -2,6 +2,11 @@
 
 본 코드는 MNIST dataset을 이용하여 ResNet-20을 learning rate 또는 weight offeset을 다양하게 주어 여러 경우의 모델을 학습시킬 수 있다. 이를 통해 동일한 epochs만큼 학습하고 나면, 각 경우의 모델이 loss가 제대로 수렴하는지 안하는지 관찰할 수 있다. 우리는 이를 loss의 수렴경계라고 지칭하고, 이 수렴경계가 프렉탈 형상을 띄는 것을 관찰할 수 있었다. 
 
+This project is demonstration that the convergence boundary of training loss is fractal, and proves that the layer of skip-connection could shrink the fractal dimension.
+
+# Method
+
+###
 
 # How to use
 
