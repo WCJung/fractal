@@ -1,44 +1,26 @@
-**#처음 내려받을 때**
+In the study proposed by J. Sohl-Dickstein [1], the presented code (https://github.com/Sohl-Dickstein/fractal) can present that the boundary of convergence or divergence for optimization  have a fractal structure according to each value was disclosed due to the fact that DNN training can be sensitive to small changes in hyperparameters. Based on the study of fractal dimension, we intend to give further insights from the theory of dynamical systems [2].
 
-**1. 본인 로컬에 anaconda를 설치한다.**
-   
-**2. conda를 통해 가상환경을 설치한다. 아래 코드를 참고!** \
-   code) \
-   conda init \
-   conda create -n (가상환경이름) python=3.10 \
-   conda activate (가상환경이름)
-   
-**3. git을 설치하고, github ID와 email을 등록한다.** \
-   code) \
-   sudo apt-get install git    # Linux는 terminal에서 이걸 입력 \
-   https://git-scm.com/download/win    # Windows는 여기서 다운받아 설치 \
-   git --version    # version check; 버전나오면 설치OK \
-   git config --global user.name (githubID) \
-   git config --global user.email (email) \
-   
-**4. 이제 파일을 내려받는다! 그리고 packages를 설치한다.** \
-   code) \
-   git init
-   git clone https://github.com/KY-HDC/fractal.git \
-   pip install -r requirements.txt \
+In order to conduct a comparative study on the loss landscape of DNN and ResNets, we implemented the code to confirm the fact that the performance of ResNets is better than that of general DNNs, and the related previous studies are described in detail as follows.
 
-**5. 세팅 완료!**
+We modified the Python code for the shallow neural networks model (with 300 nodes) [3] that we want to train by applying the open source code of the existing linear model to MNIST, and applied the JAX framework for faster operation. As a result, we were able to identify that there are sections where the optimization results fluctuate significantly even with very small changes in learning late and initial weights. 
+
+As we zoom in on the part with severe changes, we can see that it has a more asymmetrical fractal structure, and we can obtain the final fractal dimension based on the fractal dimension obtained by zooming in. In conclusion, when the values ​​of hyperparameters (batch size, epochs, learning rate, etc.) are changed, we confirmed that both train and test losses have a fractal structure.
+
+The following figure shows the results of convergence and divergence for training (left) and test (right) losses according to the settings for the learning method (MNIST, shallow neural networks with 300 nodes and ReLU, SGD, 300 epochs, 100 batch size, learning rate)
 
 
-**#코드수정하고 올리고 싶을 때(각자 branch로)**
+The darker the red, the more divergence, the darker the blue, the more convergence. As we configure the high-quality image, the training amount increases rapidly, and the fractal dimension (=box dimension) for the low-quality (256*256 pixels) standard train error was confirmed to be 1.37.
 
-**1. git clone해서 받은 코드를 필요에 맞게 수정한다.**
 
-**2. 내 branch를 생성하고, 해당 branch로 이동한다.** \
-   code) \
-   git checkout -b vX.XO    # 현재 최신버전이 v4.6이므로, 여기서 수정이 생겼다면 v4.7A, v4.7B라고 명명한다. A, B는 작성자 이니셜임. \
-   git status         # "On branch vX.XO"라고 나오면 OK \
 
-**4. 내가 작성 또는 수정한 파일들을 올린다.** \
-   code) \
-   git add . \
-   git commit -m "변경사항을 간략하게 적어줌" \
-   git remote add origin https://github.com/KY-HDC/fractal.git \
-   git push origin vX.XO \
+In this way, we have significantly modified the code for applying parallel computing to ResNets learning, and our research outline for parallel computing is as shown in below. 
 
-**5. Github에서 본인 branch에 파일이 들어왔는지 확인한다.** 
+
+
+However, there is an issue that it takes a lot of time to train ResNets for each hyperparameter in high resolutions and calculate detailed fractal dimensions. We currently have time issues for calculation, so we plan to apply the theory of dynamical systems to obtain the fractal dimension in high-dimensional settings.
+
+[1] J. Sohl-Dickstein, The boundary of neural network trainability is fractal, arXiv:2402.06184 (2024).
+
+[2] A. Fathi, Expansiveness, hyperbolicity and Hausdorff dimension, Communications in mathematical physics 126 (1989), 249-262.
+
+[3] Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner, Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278–2324, 1998.
