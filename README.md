@@ -6,7 +6,7 @@ First, we modified the Python code for the shallow neural networks model (with 3
 
 As we zoom in on the part with severe changes, we can see that it has a more asymmetrical fractal structure, and we can obtain the final fractal dimension based on the fractal dimension obtained by zooming in. In conclusion, when the values ​​of hyperparameters (batch size, epochs, learning rate, etc.) are changed, we confirmed that both train and test losses have a fractal structure.
 
-The following figure shows the results of convergence and divergence for training (left) and test (right) losses according to the settings for the learning method (MNIST, shallow neural networks with 300 nodes and ReLU, SGD, 300 epochs, 100 batch size, learning rate)
+The following figure shows the results of convergence and divergence for training (upper) and test (below) losses according to the settings for the learning method (MNIST, shallow neural networks with 300 nodes and ReLU, SGD, 300 epochs, 100 batch size, learning rate)
 
 ![zzz](https://github.com/user-attachments/assets/8b7bddbe-9c90-434f-9dec-3cecd07f3031)![bb123](https://github.com/user-attachments/assets/b96c78b7-f69a-42b1-8761-507231d0b1f5)
 
@@ -20,7 +20,7 @@ In this way, we have significantly modified the code for applying parallel compu
 ![cccccccccc](https://github.com/user-attachments/assets/6a718468-4c5c-49f8-9b5c-abd1c0e0eb51)
 
 
-However, there is an issue that it takes a lot of time to train ResNets for each hyperparameter in high resolutions and calculate detailed fractal dimensions. We currently have time issues for calculation, so we plan to apply the theory of dynamical systems to obtain the fractal dimension in high-dimensional settings.
+However, there is an issue that it takes a lot of time to train ResNets for each hyperparameter in high resolutions and calculate detailed fractal dimensions. Related for reducing time, we plan to apply the theory of dynamical systems to obtain the fractal dimension in high-dimensional settings.
 
 [1] J. Sohl-Dickstein, The boundary of neural network trainability is fractal, arXiv:2402.06184 (2024).
 
